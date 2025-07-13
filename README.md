@@ -7,7 +7,7 @@ This repo demonstrates advanced prompt engineering using only official LangChain
 ## Project File Structure
 
 ```
-/c:/Users/andre/ai-models/prompt-engineering/
+/c:/Users/path-to-your-repo/prompt-engineering/
 │
 ├── langchain_utils/              # Your reusable package
 │   ├── __init__.py
@@ -28,6 +28,7 @@ This repo demonstrates advanced prompt engineering using only official LangChain
 │
 ├── docs/                         # Documentation
 │   ├── genai-workflow-integration.md
+│   ├── cli_usage.md
 │   └── ... (other docs)
 │
 ├── templates/                    # Prompt templates (if used)
