@@ -1,0 +1,121 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prompt-framework"
+version = "0.1.0"
+description = "Hybrid Prompt Engineering Framework"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Andre", email = "andre@example.com"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "click>=8.0.0",
+    "pyyaml>=6.0",
+    "typing-extensions>=4.0.0",
+    "langchain==0.1.0",
+    "langchain-openai==0.0.2",
+    "langchain-anthropic==0.0.1",
+    "langchain-community==0.0.10",
+    "langchain-core==0.1.0",
+    "langchain-experimental==0.0.47",
+    "langsmith==0.0.69",
+]
+
+[project.optional-dependencies]
+langchain = [
+    "langchain==0.1.0",
+    "langchain-openai==0.0.2",
+    "langchain-anthropic==0.0.1",
+    "langchain-community==0.0.10",
+    "langchain-core==0.1.0",
+    "langchain-experimental==0.0.47",
+    "langsmith==0.0.69",
+]
+guidance = ["guidance>=0.1.0"]
+dspy = ["dspy-ai>=2.0.0"]
+optimization = ["numpy>=1.20.0"]
+storage = ["sqlite3"]
+enhanced = ["jinja2>=3.0.0", "pydantic>=1.8.0"]
+web = ["fastapi>=0.100.0", "streamlit>=1.28.0"]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+]
+all = [
+    "langchain==0.1.0",
+    "langchain-openai==0.0.2",
+    "langchain-anthropic==0.0.1",
+    "langchain-community==0.0.10",
+    "langchain-core==0.1.0",
+    "langchain-experimental==0.0.47",
+    "langsmith==0.0.69",
+    "guidance>=0.1.0",
+    "dspy-ai>=2.0.0",
+    "numpy>=1.20.0",
+    "jinja2>=3.0.0",
+    "pydantic>=1.8.0",
+    "fastapi>=0.100.0",
+    "streamlit>=1.28.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/andre/prompt-framework"
+Repository = "https://github.com/andre/prompt-framework"
+Issues = "https://github.com/andre/prompt-framework/issues"
+
+[project.scripts]
+prompt-cli = "prompt_framework.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["../.."]
+
+[tool.setuptools.package-dir]
+"" = ""
+
+# Tool configurations
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+per-file-ignores = [
+    "__init__.py:F401"
+]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+markers = [
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+    "slow: marks tests as slow running"
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
